@@ -1,179 +1,180 @@
 body {
-  background-color: #f4f7f6;
-  height: 100vh;
-  overflow: hidden;
+   background-color: #f4f7f6;
+   height: 100vh;
+   overflow: hidden;
 }
 
 .container-chat {
-  width: 100%;
+   width: 100%;
 }
 
 .top-container {
-  width: 100%;
+   width: 100%;
 }
 
 .left-top-container {
-  width: 30%;
-  float: left;
+   width: 30%;
+   float: left;
 }
 
 .right-top-container {
-  width: 70%;
-  float: right;
+   width: 70%;
+   float: right;
 }
 
 .body-container {
-  width: 100%;
-  height: calc(100vh - 150px);
-  margin-top: 30px;
+   width: 100%;
+   height: calc(100vh - 150px);
+   margin-top: 30px;
 }
 
 .left-body-container {
-  width: 50%;
-  height: calc(100vh - 150px);
+   width: 50%;
+   height: calc(100vh - 150px);
 }
 
 .right-body-container {
-  width: 50%;
-  height: calc(100vh - 150px);
+   width: 50%;
+   height: calc(100vh - 150px);
 }
 
 #editor {
-  height: calc(100vh - 150px);
+   height: calc(100vh - 150px);
 }
 
 .card {
-  width: 80%;
-  border: none;
-  border-radius: 15px;
-  height: calc(100vh - 250px);
+   width: 80%;
+   border: none;
+   border-radius: 15px;
+   height: calc(100vh - 250px);
 }
 
 .adiv {
-  background: #04cb28;
-  border-radius: 15px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-  font-size: 12px;
-  height: 46px;
+   background: #04cb28;
+   border-radius: 15px;
+   border-bottom-right-radius: 0;
+   border-bottom-left-radius: 0;
+   font-size: 12px;
+   height: 46px;
 }
 .chat {
-  border: none;
-  background: #e2ffe8;
-  font-size: 10px;
-  border-radius: 20px;
+   border: none;
+   background: #e2ffe8;
+   font-size: 10px;
+   border-radius: 20px;
 }
 
 .bg-white {
-  border: 1px solid #e7e7e9;
-  font-size: 10px;
-  border-radius: 20px;
+   border: 1px solid #e7e7e9;
+   font-size: 10px;
+   border-radius: 20px;
 }
 
 .myvideo img {
-  border-radius: 20px;
+   border-radius: 20px;
 }
 
 .dot {
-  font-weight: bold;
+   font-weight: bold;
 }
 
 .form-control-chat {
-  border-radius: 12px;
-  border: 1px solid #f0f0f0;
-  font-size: 14px;
+   border-radius: 12px;
+   border: 1px solid #f0f0f0;
+   font-size: 14px;
 }
 
 .form-control-chat:focus {
-  box-shadow: none;
+   box-shadow: none;
 }
 
 .form-control-chat::placeholder {
-  font-size: 14px;
-  color: #c4c4c4;
+   font-size: 14px;
+   color: #c4c4c4;
 }
 
 .chat-input {
-  bottom: 4px;
-  left: 0;
-  width: 100%;
+   bottom: 4px;
+   left: 0;
+   width: 100%;
 }
 
 .chat-form-body {
-  width: 100%;
-  height: calc(100vh - 450px);
-  overflow: auto;
-  display: flex;
-  flex-direction: column-reverse;
+   width: 100%;
+   height: calc(100vh - 450px);
+   overflow: auto;
+   display: flex;
+   flex-direction: column-reverse;
 }
 
 .message-left {
-  width: 100%;
+   width: 100%;
 }
 
 .message-right {
-  width: 100%;
-  justify-content: flex-end;
+   width: 100%;
+   justify-content: flex-end;
 }
 
 .room-name {
-  font-size: 16px;
-  font-weight: bold;
+   font-size: 16px;
+   font-weight: bold;
 }
 
-.chat, .text-muted {
-  font-size: 14px;
+.chat,
+.text-muted {
+   font-size: 14px;
 }
 
 .name-user {
-  font-size: 14px;
-  font-weight: bold;
-  position: relative;
-  bottom: 5px;
+   font-size: 14px;
+   font-weight: bold;
+   position: relative;
+   bottom: 5px;
 }
 
 @media only screen and (max-width: 767px) {
-  .chat-app .people-list {
-    height: 465px;
-    width: 100%;
-    overflow-x: auto;
-    background: #fff;
-    left: -400px;
-    display: none;
-  }
-  .chat-app .people-list.open {
-    left: 0;
-  }
-  .chat-app .chat {
-    margin: 0;
-  }
-  .chat-app .chat .chat-header {
-    border-radius: 0.55rem 0.55rem 0 0;
-  }
-  .chat-app .chat-history {
-    height: 300px;
-    overflow-x: auto;
-  }
+   .chat-app .people-list {
+      height: 465px;
+      width: 100%;
+      overflow-x: auto;
+      background: #fff;
+      left: -400px;
+      display: none;
+   }
+   .chat-app .people-list.open {
+      left: 0;
+   }
+   .chat-app .chat {
+      margin: 0;
+   }
+   .chat-app .chat .chat-header {
+      border-radius: 0.55rem 0.55rem 0 0;
+   }
+   .chat-app .chat-history {
+      height: 300px;
+      overflow-x: auto;
+   }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 992px) {
-  .chat-app .chat-list {
-    height: 650px;
-    overflow-x: auto;
-  }
-  .chat-app .chat-history {
-    height: 600px;
-    overflow-x: auto;
-  }
+   .chat-app .chat-list {
+      height: 650px;
+      overflow-x: auto;
+   }
+   .chat-app .chat-history {
+      height: 600px;
+      overflow-x: auto;
+   }
 }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) {
-  .chat-app .chat-list {
-    height: 480px;
-    overflow-x: auto;
-  }
-  .chat-app .chat-history {
-    height: calc(100vh - 350px);
-    overflow-x: auto;
-  }
+   .chat-app .chat-list {
+      height: 480px;
+      overflow-x: auto;
+   }
+   .chat-app .chat-history {
+      height: calc(100vh - 350px);
+      overflow-x: auto;
+   }
 }
