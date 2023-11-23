@@ -46,13 +46,14 @@ $(function () {
          })
          .then(function (data) {
             let html = '';
+
             data.data.map((item) => {
                if (user_id == item.user.id) {
                   html += ` <li class="clearfix chat-item">
                         <div class="message-data text-right">
                         <span class="message-data-time">${item.user.name}</span>
                         <img
-                            src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                            src="${item.user.avatar}"
                             alt="avatar"
                         />
                         </div>
@@ -64,7 +65,7 @@ $(function () {
                   html += ` <li class="clearfix">
                             <div class="message-data">
                             <img
-                                src="	https://bootdey.com/img/Content/avatar/avatar2.png"
+                                src="${item.user.avatar}"
                                 alt="avatar"
                             />
                             <span class="message-data-time">${item.user.name}</span>

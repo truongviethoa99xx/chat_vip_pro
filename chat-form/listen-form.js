@@ -27,7 +27,7 @@ async function renderChatResponseForm(data) {
        <div class="message-data text-right">
        <span class="message-data-time">${data.user.name}</span>
        <img
-       src="https://bootdey.com/img/Content/avatar/avatar7.png"
+       src="${data.user.avatar}"
        alt="avatar"
        />
        </div>
@@ -42,7 +42,7 @@ async function renderChatResponseForm(data) {
          `<li class="clearfix">
           <div class="message-data">
           <img
-          src="https://bootdey.com/img/Content/avatar/avatar2.png"
+          src="${data.user.avatar}"
           alt="avatar"
           />
           <span class="message-data-time">${data.user.name}</span>

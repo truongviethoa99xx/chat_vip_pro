@@ -13,7 +13,7 @@ $('#connect').click(async function () {
    document.cookie = `domain=${domain}; expires=` + expireDate.toUTCString();
 
    // Sự kiện khi kết nối thành công
-   socket = io(`${domain}?user_id=9`); // Thay đổi URL thành URL của máy chủ Socket.IO của bạn
+   socket = io(`${domain}?user_id=${$('#user_id').val()}`); // Thay đổi URL thành URL của máy chủ Socket.IO của bạn
 
    socket.on('connect', function () {
       console.log('Socket connected');
@@ -89,17 +89,17 @@ $(function () {
          .then(function (data) {
             let html = '';
             data.data.map((item) => {
-               if (9 == item.user.id) {
+               if ($('#user_id').val() == item.user.id) {
                   html += `<div class="d-flex flex-row p-3 message-right">
                         <div class="bg-white chat ml-2 p-3 position-relative">
                             <div class="name-user">${item.user.name}</div>
                             <span class="text-muted">${item.msg}</span>
                         </div>
-                        <img src="https://img.icons8.com/color/48/000000/circled-user-male-skin-type-7.png" width="30" height="30" />
+                        <img src="${item.user.avatar}" width="30" height="30" />
                     </div>`;
                } else {
                   html += `<div class="d-flex flex-row p-3 message-left">
-                        <img src="https://img.icons8.com/color/48/000000/circled-user-female-skin-type-7.png" width="30" height="30" />
+                        <img src="${item.user.avatar}" width="30" height="30" />
                         <div class="chat ml-2 p-3">
                           <div class="name-user">${item.user.name}</div>
                           ${item.msg}

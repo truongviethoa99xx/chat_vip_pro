@@ -28,13 +28,13 @@ async function renderChatResponse(data) {
         <div class="name-user">${data.user.name}</div>
             <span class="text-muted">${message}</span>
         </div>
-        <img src="https://img.icons8.com/color/48/000000/circled-user-male-skin-type-7.png" width="30" height="30" />
+        <img src="${data.user.avatar}" width="30" height="30" />
       </div>`
       );
    } else {
       $('#chat-main').append(
          `<div class="d-flex flex-row p-3 message-left">
-          <img src="https://img.icons8.com/color/48/000000/circled-user-female-skin-type-7.png" width="30" height="30" />
+          <img src="${data.user.avatar}" width="30" height="30" />
           <div class="chat ml-2 p-3">
           <div class="name-user">${data.user.name}</div>
             ${message}
