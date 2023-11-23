@@ -65,6 +65,7 @@ $(function () {
     });
 
   $(document).on("click", ".chat-room-item", function () {
+    textarea.value = "";
     room_id = $(this).data("id");
     let name = $(this).find(".name").text();
     $("#room-name").text(name);
@@ -121,7 +122,7 @@ $(function () {
     if (event.key === "Enter") {
       event.preventDefault();
       let value = textarea.value;
-      if (!value) {
+      if (!value.split(" ").join("")) {
         return;
       }
       let data = {

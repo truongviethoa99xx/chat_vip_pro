@@ -151,6 +151,7 @@ body {
 
 .chat .chat-history .my-message {
   background: #efefef;
+  max-width: 70%;
 }
 
 .chat .chat-history .my-message:after {
