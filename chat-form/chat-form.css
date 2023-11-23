@@ -114,6 +114,9 @@ body {
 .chat .chat-history .message-data img {
   border-radius: 40px;
   width: 40px;
+  height: 40px;
+  border: 1px solid #dfdfdf;
+  object-fit: cover;
 }
 
 .chat .chat-history .message-data-time {
@@ -129,6 +132,7 @@ body {
   border-radius: 7px;
   display: inline-block;
   position: relative;
+  min-width: 100px;
 }
 
 .chat .chat-history .message:after {
@@ -170,7 +174,7 @@ body {
 
 .chat .chat-history .other-message:after {
   border-bottom-color: #e8f1f3;
-  left: 93%;
+  left: 83%;
 }
 
 .chat .chat-message {
@@ -208,6 +212,20 @@ body {
   content: " ";
   clear: both;
   height: 0;
+}
+
+.name-user {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 0;
+  color: #fff;
+}
+
+.avatar-user {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 4px;
 }
 
 @media only screen and (max-width: 767px) {

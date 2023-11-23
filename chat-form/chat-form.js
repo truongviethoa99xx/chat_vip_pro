@@ -1,23 +1,51 @@
 let socket;
-socket = io(`http://172.16.4.5:6969?user_id=1`);
+let user_id_login;
 
-socket.on('connect', function () {
-   console.log('Socket connected');
-});
+$("#connect-user").click(function () {
+  let user = $("#user_id").val();
+  if (user) {
+    fetch(`http://172.16.4.5:6969/${user}/user`)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        if (data) {
+          alert(`Đăng nhập thành công user_id: ${user}`);
+          $(".name-user").text(data.data.name);
+          $(".avatar-user").attr("src", data.data.avatar);
+          user_id_login = data.data.id;
+        } else {
+          alert("Đăng nhập thất bại");
+        }
+      })
+      .catch(function (error) {
+        console.log("Đã xảy ra lỗi: " + error);
+      });
+  } else {
+    alert("Vui lòng nhập user_id");
+    return;
+  }
 
-socket.on('disconnect', () => {
-   console.log('Socket disconnected');
+  socket = io(`http://172.16.4.5:6969?user_id=${$("#user_id").val()}`);
+
+  socket.on("connect", function () {
+    console.log("Socket connected");
+  });
+
+  socket.on("disconnect", () => {
+    console.log("Socket disconnected");
+  });
+
+  listenForm();
 });
 
 $(function () {
-   listenForm();
-   let user_id = 1;
-   let room_id;
-   fetch('http://172.16.4.5:6969/room')
-      .then((response) => response.json())
-      .then((data) => {
-         let html = data.data.map((item) => {
-            return `<li class="clearfix chat-room-item" data-id="${item.id}">
+  let room_id;
+  fetch("http://172.16.4.5:6969/room")
+    .then((response) => response.json())
+    .then((data) => {
+      let html = data.data.map((item) => {
+        return `<li class="clearfix chat-room-item" data-id="${item.id}">
                     <img
                     src="https://bootdey.com/img/Content/avatar/avatar1.png"
                     alt="avatar"
@@ -29,27 +57,27 @@ $(function () {
                     </div>
                     </div>
                 </li>`;
-         });
-         $('.list-unstyled.chat-list').html(html);
-      })
-      .catch((err) => {
-         console.log(err);
       });
+      $(".list-unstyled.chat-list").html(html);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 
-   $(document).on('click', '.chat-room-item', function () {
-      room_id = $(this).data('id');
-      let name = $(this).find('.name').text();
-      $('#room-name').text(name);
-      fetch(`http://172.16.4.5:6969/${room_id}/list-message`)
-         .then(function (response) {
-            return response.json();
-         })
-         .then(function (data) {
-            let html = '';
+  $(document).on("click", ".chat-room-item", function () {
+    room_id = $(this).data("id");
+    let name = $(this).find(".name").text();
+    $("#room-name").text(name);
+    fetch(`http://172.16.4.5:6969/${room_id}/list-message`)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        let html = "";
 
-            data.data.map((item) => {
-               if (user_id == item.user.id) {
-                  html += ` <li class="clearfix chat-item">
+        data.data.map((item) => {
+          if (user_id_login == item.user.id) {
+            html += ` <li class="clearfix chat-item">
                         <div class="message-data text-right">
                         <span class="message-data-time">${item.user.name}</span>
                         <img
@@ -61,8 +89,8 @@ $(function () {
                         ${item.msg}
                         </div>
                     </li>`;
-               } else {
-                  html += ` <li class="clearfix">
+          } else {
+            html += ` <li class="clearfix">
                             <div class="message-data">
                             <img
                                 src="${item.user.avatar}"
@@ -72,34 +100,38 @@ $(function () {
                             </div>
                             <div class="message my-message">${item.msg}</div>
                         </li>`;
-               }
-            });
-            $('#chat-body').html(html);
-         })
-         .catch(function (error) {
-            console.log('Đã xảy ra lỗi: ' + error);
-         });
+          }
+        });
+        $("#chat-body").html(html);
+      })
+      .catch(function (error) {
+        console.log("Đã xảy ra lỗi: " + error);
+      });
 
-      let data = {
-         room_id: room_id,
-      };
-      socket.emit('leave-room', data);
-      socket.emit('join-room', data);
-   });
+    let data = {
+      room_id: room_id,
+    };
+    socket.emit("leave-room", data);
+    socket.emit("join-room", data);
+  });
 
-   const textarea = document.getElementById('input-message');
+  const textarea = document.getElementById("input-message");
 
-   textarea.addEventListener('keydown', function (event) {
-      if (event.key === 'Enter') {
-         console.log('enter');
-         event.preventDefault();
-         let value = textarea.value;
-         let data = {
-            room_id: room_id,
-            message: value,
-         };
-         socket.emit('message-text', data);
-         textarea.value = '';
+  textarea.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      let value = textarea.value;
+      if (!value) {
+        return;
       }
-   });
+      let data = {
+        room_id: room_id,
+        message: value,
+      };
+      socket.emit("message-text", data);
+      textarea.value = "";
+    }
+  });
 });
+
+async function showAlert() {}
